@@ -30,7 +30,7 @@ inner.Gov = rbind(Transparency,Accountability,Legal, Value)
 outer.gov =list(1:10, 11:17, 27:34, 35:41)
 modes.Gov= rep("A", 4)
 pls.Gov=plspm(Gov.fib,inner.Gov, outer.gov,modes.Gov)
-summary(pls.Governance)
+summary(pls.Gov)
 # re-ordering those segmentation variables with ordinal scale
 seg.Gov= Gov.fib[,1:2]
 seg.Gov$Age = factor(seg.Gov$Age, ordered=T)
@@ -41,6 +41,7 @@ seg.Gov$Gender = factor(seg.Gov$Gender, ordered=T)
 #Issue for noting
 Gov.pathmox1=pls.pathmox(pls.Gov,inner.Gov,outer.gov,modes.Gov,SVAR=seg.Gov,signif=0.05,
                          deep=2,size=0.2,n.node=20)
+fib.comp=pls.treemodel(Gov.pathmox1)
 summary(Gov.pathmox1)
 Gov.pathmox1
 
